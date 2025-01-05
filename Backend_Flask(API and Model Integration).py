@@ -5,19 +5,15 @@ import pandas as pd
 import logging
 import os
 
-# Initialize Flask app
 app = Flask(__name__)
 CORS(app)
 
-# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Check if the model file exists
 if not os.path.exists('credit_model.pkl'):
     logging.error("Model file not found!")
     exit(1)
 
-# Load pre-trained ML model
 try:
     model = joblib.load('credit_model.pkl')
     logging.info("Model loaded successfully.")
@@ -27,27 +23,21 @@ except FileNotFoundError:
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    try:
-        # Get data from request
+    try:       
         data = request.get_json()
 
-        # Validate input data (example)
         required_features = ['feature1', 'feature2', 'feature3']  # Replace with actual feature names
         if not all(feature in data for feature in required_features):
             return jsonify({'error': 'Missing required features'}), 400
 
-        # Ensure that the input data types are correct (example for feature1)
         if not isinstance(data['feature1'], (int, float)):
             return jsonify({'error': 'Feature1 must be a number'}), 400
 
-        # Convert to DataFrame
         features = pd.DataFrame([data])
 
-        # Make prediction
         risk_score = model.predict(features)[0]
         probabilities = model.predict_proba(features)[0]
 
-        # Respond with predictions
         return jsonify({
             'risk_score': risk_score,
             'probabilities': {
