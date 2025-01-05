@@ -32,3 +32,7 @@ https://www.kaggle.com/code/sukandwyrm/notebookf1148cf6d2
 Flask Backend:
 https://www.kaggle.com/code/sukandwyrm/notebook971748f37d
 
+Round 2:
+Expanding on explainability:
+As stated before ,One of our goals is to make sure that users gain a clear perspective on the data obtained. Now our work will focus on integrating the ML backend with our Flask frontend. The outputs of all 3 ML algorithms will be accessible and a separate page will display a graph based on user data collected from them.
+And so, we hope to locally host and deploy a website that implements all these features.
