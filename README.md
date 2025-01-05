@@ -19,3 +19,5 @@ Apart from Social Media Sentiment ,the other two fields require a pre - existing
 To give an example , Geolocation Data assigns stability scores based on customer city. For this we need to collect the credit score data for that particular city.
 We have used a Kaggle Dataset
 (https://www.kaggle.com/datasets/parisrohan/credit-score-classification?select=train.csv )
+
+In order to resolve missing data problems, kindly use the preprocessed data present in the repository.
