@@ -1,0 +1,88 @@
+import json
+import requests
+
+def preprocess_data(data):
+    """
+    Preprocess incoming data before sending it to the /predict endpoint.
+
+    Args:
+        data (dict): Raw input data.
+
+    Returns:
+        dict: Preprocessed data.
+    """
+    print("[DEBUG] Raw input data:", data)
+
+    required_keys = ["feature1", "feature2", "feature3"]
+    for key in required_keys:
+        if key not in data:
+            raise ValueError(f"Missing required key: {key}")
+
+    for key in required_keys:
+        if data[key] is None:
+            print(f"[DEBUG] Key '{key}' has a None value, replacing it.")
+            if key in ["feature1", "feature2"]:  # Numerical fields
+                data[key] = 0
+            elif key == "feature3":  # Categorical fields
+                data[key] = ""
+
+    numerical_keys = ["feature1", "feature2"]
+    for key in numerical_keys:
+        if not isinstance(data[key], (int, float)):
+            raise ValueError(f"Invalid type for {key}: expected int or float, got {type(data[key]).__name__}")
+        original_value = data[key]
+        data[key] = (data[key] - 10) / 2  # Example normalization
+        print(f"[DEBUG] Normalized {key}: {original_value} -> {data[key]}")
+
+    categorical_keys = ["feature3"]
+    for key in categorical_keys:
+        if isinstance(data[key], str):
+            original_value = data[key]
+            data[key] = data[key].lower().strip()  # Example encoding
+            print(f"[DEBUG] Encoded {key}: '{original_value}' -> '{data[key]}'")
+        else:
+            raise ValueError(f"Invalid type for {key}: expected str, got {type(data[key]).__name__}")
+
+    filtered_data = {key: data[key] for key in required_keys}
+    print("[DEBUG] Preprocessed data:", filtered_data)
+
+    return filtered_data
+
+def send_to_predict_endpoint(preprocessed_data, endpoint_url):
+    """
+    Send preprocessed data to the /predict endpoint.
+
+    Args:
+        preprocessed_data (dict): Preprocessed data.
+        endpoint_url (str): URL of the /predict endpoint.
+
+    Returns:
+        dict: Response from the /predict endpoint.
+    """
+    print("[DEBUG] Sending data to endpoint:", preprocessed_data)
+    response = requests.post(endpoint_url, json=preprocessed_data)
+    print("[DEBUG] Response status code:", response.status_code)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print("[DEBUG] Response text:", response.text)
+        response.raise_for_status()
+
+if __name__ == "__main__":
+    raw_data = {
+        "feature1": 25,
+        "feature2": None,
+        "feature3": " Category A ",
+        "extra_key": "unexpected"
+    }
+
+    try:
+        preprocessed_data = preprocess_data(raw_data)
+        print("Preprocessed Data:", preprocessed_data)
+
+        endpoint_url = "http://example.com/predict"
+        prediction = send_to_predict_endpoint(preprocessed_data, endpoint_url)
+        print("Prediction Response:", prediction)
+
+    except Exception as e:
+        print("Error:", str(e))
