@@ -36,3 +36,11 @@ Round 2:
 Expanding on explainability:
 As stated before ,One of our goals is to make sure that users gain a clear perspective on the data obtained. Now our work will focus on integrating the ML backend with our Flask frontend. The outputs of all 3 ML algorithms will be accessible and a separate page will display a graph based on user data collected from them.
 And so, we hope to locally host and deploy a website that implements all these features.
+
+This page is a demo of what a Real - Time system can achieve. For demonstration purposes we have taken datasets from Kaggle , Google and generated our own.
+   The model predicts this person is low risk (likely to repay the loan).
+        Explanation:
+            Social Media Sentiment: Positive posts (+10%).
+            Utility Payments: Consistent on-time payments (+20%).
+            Location Stability: Staying in one place (+15%).
+After generating the predicted outputs from the the 3 Ml algorithms used , we focused on the positive weighted interactions and assigned a multiplier to them. To express in simple terms, this is the formula we used.  
