@@ -1,0 +1,78 @@
+    Age  Gender What's the first thing you do when you receive your paycheck?  \
+0  19.0    Male                                               Save              
+1  18.0    Male                                               Save              
+2  18.0    Male                                              Spend              
+3  19.0    Male                                               Save              
+4  19.0  Female                                          Pay bills              
+
+  Do you track your spending on a regular basis?  \
+0                                      Sometimes   
+1                                      Sometimes   
+2                           No, I don't track it   
+3                                      Sometimes   
+4                                      Sometimes   
+
+  How often do you make impulse purchases (buying things not planned)?  \
+0                                             Rarely                     
+1                                             Rarely                     
+2                                         Frequently                     
+3                                             Rarely                     
+4                                         Frequently                     
+
+  If you received an unexpected bonus of 20,000? what would you do with it?    \
+0                                            Save it                            
+1                                          Invest it                            
+2                                           Spend it                            
+3                                          Invest it                            
+4                                            Save it                            
+
+  Do you have a budget that you follow each month?    \
+0                          No, i don't have a budget   
+1                Yes, but I don't always stick to it   
+2                          No, i don't have a budget   
+3                Yes, but I don't always stick to it   
+4                          No, i don't have a budget   
+
+   What motivates you the most to save money?    \
+0                               Future security   
+1                               Future security   
+2                                  No motivates   
+3                                        Travel   
+4                               Future security   
+
+  How comfortable are you with using financial products (e.g., credit cards, loans, investments)?    \
+0                                    Not comfortable                                                  
+1                               Somewhat comfortable                                                  
+2                                    Not comfortable                                                  
+3                                    Not comfortable                                                  
+4                                   Very comfortable                                                  
+
+  Have you set specific financial goals for the next 5 years?    \
+0               No, I haven't thought that far ahead              
+1               No, I haven't thought that far ahead              
+2               No, I haven't thought that far ahead              
+3               No, I haven't thought that far ahead              
+4               No, I haven't thought that far ahead              
+
+  How confident are you in making investment decisions?    \
+0                                 Somewhat confident        
+1                               Not confident at all        
+2                               Not confident at all        
+3                                 Somewhat confident        
+4                                 Somewhat confident        
+
+  Which financial habit are you most proud of adopting in the past year?    
+0                                      Spending less                        
+1                  Creating and sticking to a budget                        
+2                                      Spending less                        
+3                                      Spending less                        
+4                                        Saving more                        
+               Age
+count  1045.000000
+mean     39.809569
+std      13.774077
+min      17.000000
+25%      28.000000
+50%      39.000000
+75%      52.000000
+max      69.000000
