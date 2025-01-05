@@ -9,12 +9,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import os
 
-# Configuration
+
 REPORT_FILENAME = "prediction_report.txt"
 VISUALIZATIONS_DIR = "visualizations"
 os.makedirs(VISUALIZATIONS_DIR, exist_ok=True)
 
-# Example dataset generation
 np.random.seed(42)
 n_samples = 1000
 n_features = 5
@@ -23,23 +22,18 @@ feature_names = ['PaymentHistory', 'Income', 'CreditUtilization', 'SocialMediaSe
 X = pd.DataFrame(np.random.rand(n_samples, n_features), columns=feature_names)
 y = (X['PaymentHistory'] + X['Income'] * 0.5 - X['CreditUtilization'] * 0.3 + X['SocialMediaSentiment'] * 0.2 > 1).astype(int)
 
-# Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Model training
 model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
-# Model evaluation
 y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Model accuracy: {accuracy * 100:.2f}%")
 
-# SHAP explanations
 explainer = shap.Explainer(model, X_train)
 shap_values = explainer(X_test)
 
-# Save SHAP visualizations
 try:
     shap.summary_plot(shap_values.values, X_test, feature_names=feature_names, show=False)
     plt.savefig(os.path.join(VISUALIZATIONS_DIR, "shap_summary_plot.png"))
@@ -48,7 +42,6 @@ try:
 except Exception as e:
     print(f"Error saving SHAP summary plot: {e}")
 
-# Save SHAP dependence plots for all features
 for feature in feature_names:
     try:
         shap.dependence_plot(feature, shap_values.values, X_test, feature_names=feature_names, show=False)
@@ -58,7 +51,6 @@ for feature in feature_names:
     except Exception as e:
         print(f"Error saving SHAP dependence plot for {feature}: {e}")
 
-# LIME explanations
 lime_explainer = lime.lime_tabular.LimeTabularExplainer(
     training_data=np.array(X_train),
     feature_names=feature_names,
@@ -66,7 +58,6 @@ lime_explainer = lime.lime_tabular.LimeTabularExplainer(
     mode='classification'
 )
 
-# Enhanced Report Generation
 def generate_report(
     model: RandomForestClassifier, 
     instance: pd.Series, 
@@ -96,7 +87,6 @@ def generate_report(
         report += f"- {feature}: {value:.2f} (Contribution to risk score: {shap_value:.2f})\n"
     return report
 
-# Generate and save reports for top 5 instances
 with open(REPORT_FILENAME, "w") as f:
     for i in range(min(5, len(X_test))):  # Limit to top 5 instances for brevity
         instance = X_test.iloc[i]
