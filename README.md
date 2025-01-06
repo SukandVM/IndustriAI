@@ -49,7 +49,7 @@ avg_score = (model1_output * model1_multiplier + model2_output * model2_multipli
 
 [Contribution = Weight × Average Score from Model Outputs:]
     
-total_score = avg_score + sentiment_contribution + utility_contribution + location_contribution].
+total_score = avg_score + sentiment_contribution + utility_contribution + location_contribution.
 
 Using the data generated from this a graph was plotted.
 
