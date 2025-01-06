@@ -1,0 +1,23 @@
+Best Parameters: {'clf__max_depth': 10, 'clf__min_samples_split': 2, 'clf__n_estimators': 100, 'tfidf__max_df': 0.75}
+Unique classes in the test set: {0, 1}
+Unique classes in the prediction: {1}
+
+Classification Summary (Percentage - Wise):
+----------------------------------------------------
+Class: Negative
+  - Precision: 0.00% (How often the model was correct when it said negative)
+  - Recall: 0.00% (How good the model is at identifying all negative posts)
+  - F1-Score: 0.00% (A balance of precision and recall for negative)
+  - Support: 1 posts were actually labeled as negative
+----------------------------------------------------
+Class: Neutral
+  - Precision: 75.00% (How often the model was correct when it said neutral)
+  - Recall: 100.00% (How good the model is at identifying all neutral posts)
+  - F1-Score: 86.00% (A balance of precision and recall for neutral)
+  - Support: 3 posts were actually labeled as neutral
+----------------------------------------------------
+Class: Positive
+  - Precision: 0.00% (How often the model was correct when it said positive)
+  - Recall: 0.00% (How good the model is at identifying all positive posts)
+  - F1-Score: 0.00% (A balance of precision and recall for positive)
+  - Support: 0 posts were actually labeled as positive
