@@ -31,6 +31,8 @@ Geolocation Model:
 https://www.kaggle.com/code/sukandwyrm/notebookf1148cf6d2
 Flask Backend:
 https://www.kaggle.com/code/sukandwyrm/notebook971748f37d
+Tabulation:
+https://www.kaggle.com/code/sukandwyrm/notebookf2d7c27026
 
 Round 2:
 Expanding on explainability:
