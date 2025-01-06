@@ -47,9 +47,7 @@ After generating the predicted outputs from the the 3 Ml algorithms used , we fo
 
 avg_score = (model1_output * model1_multiplier + model2_output * model2_multiplier + model3_output * model3_multiplier) / 3
 
-sentiment_contribution = explanation["Social Media Sentiment"] * avg_score
-utility_contribution = explanation["Utility Payments"] * avg_score
-location_contribution = explanation["Location Stability"] * avg_score
+[Contribution = Weight × Average Score from Model Outputs:]
     
 total_score = avg_score + sentiment_contribution + utility_contribution + location_contribution].
 
